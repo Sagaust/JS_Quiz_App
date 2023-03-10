@@ -1,243 +1,191 @@
-var questions = [
-  {
-    question: "What is the correct syntax for creating a new JavaScript variable?",
-    choices: {
-      a: "var = exampleVariable;",
-      b: "variable exampleVariable = new var;",
-      c: "var exampleVariable = '';",
-      d: "variable.exampleVariable = '';"
-    },
-    correctAnswer: "c"
-  },
-  {
-    question: "Which of the following is NOT a JavaScript data type?",
-    choices: {
-      a: "string",
-      b: "boolean",
-      c: "integer",
-      d: "object"
-    },
-    correctAnswer: "c"
-  },
-  {
-    question: "What is the output of the following code?\n\nconsole.log('5' + 5);",
-    choices: {
-      a: "55",
-      b: "10",
-      c: "undefined",
-      d: "NaN"
-    },
-    correctAnswer: "a"
-  },
-  {
-    question: "What is the output of the following code?\n\nvar x = 10;\nconsole.log(x == '10');",
-    choices: {
-      a: "true",
-      b: "false",
-      c: "undefined",
-      d: "NaN"
-    },
-    correctAnswer: "a"
-  },
-  {
-    question: "What is the correct way to create a function in JavaScript?",
-    choices: {
-      a: "function = exampleFunction() {}",
-      b: "var exampleFunction = function() {}",
-      c: "function exampleFunction() {}",
-      d: "var exampleFunction = () => {}"
-    },
-    correctAnswer: "c"
-  },
-  {
-    question: "What is the output of the following code?\n\nconsole.log(typeof null);",
-    choices: {
-      a: "null",
-      b: "undefined",
-      c: "object",
-      d: "string"
-    },
-    correctAnswer: "c"
-  },
-  {
-    question: "Which of the following is NOT a comparison operator in JavaScript?",
-    choices: {
-      a: "==",
-      b: "===",
-      c: "!=",
-      d: "!=="
-    },
-    correctAnswer: "d"
-  },
-  {
-    question: "What is the output of the following code?\n\nvar exampleArray = [1, 2, 3];\nconsole.log(exampleArray[2]);",
-    choices: {
-      a: "1",
-      b: "2",
-      c: "3",
-      d: "undefined"
-    },
-    correctAnswer: "c"
-  },
-  {
-    question: "What is the correct way to write an 'if' statement in JavaScript?",
-    choices: {
-      a: "if exampleVariable == true then {}",
-      b: "if (exampleVariable == true) {}",
-      c: "if exampleVariable equals true {}",
-      d: "if exampleVariable is true then {}"
-    },
-    correctAnswer: "b"
-  },
-  {
-    question: "What is the output of the following code?\n\nconsole.log(5 > 3 && 2 < 4);",
-    choices: {
-      a: "true",
-      b: "false",
-      c: "undefined",
-      d: "NaN"
-    },
-    correctAnswer: "a"
-  }
+var quizQuestions = [
+{
+question: "What is JavaScript?",
+choices: [
+"A type of coffee",
+"A scripting language used to create interactive web pages",
+"A new type of computer",
+"A type of tree"
+],
+correctAnswerIndex: 1
+},
+{
+question: "What is a variable?",
+choices: [
+"A type of insect",
+"A container for storing data values",
+"A type of fish",
+"A musical instrument"
+],
+correctAnswerIndex: 1
+},
+{
+question: "What is a function?",
+choices: [
+"A type of fruit",
+"A reusable block of code that performs a specific task",
+"A type of bird",
+"A type of car"
+],
+correctAnswerIndex: 1
+},
+{
+question: "What is an array?",
+choices: [
+"A type of pizza",
+"A collection of data values",
+"A type of flower",
+"A type of building"
+],
+correctAnswerIndex: 1
+},
+{
+question: "What is a loop?",
+choices: [
+"A type of dance",
+"A structure used to repeat a block of code",
+"A type of animal",
+"A type of game"
+],
+correctAnswerIndex: 1
+},
+{
+question: "What is an object?",
+choices: [
+"A type of machine",
+"A collection of related data and/or functionality",
+"A type of food",
+"A type of book"
+],
+correctAnswerIndex: 1
+},
+{
+question: "What is the DOM?",
+choices: [
+"A type of movie",
+"The Document Object Model, which represents the content of a web page as objects",
+"A type of sport",
+"A type of building material"
+],
+correctAnswerIndex: 1
+},
+{
+question: "What is a conditional statement?",
+choices: [
+"A type of tree",
+"A statement that performs different actions depending on whether a condition is true or false",
+"A type of tool",
+"A type of dance"
+],
+correctAnswerIndex: 1
+},
+{
+question: "What is the difference between '==' and '==='?",
+choices: [
+"'==' compares values, while '===' compares values and types",
+"'===' compares values, while '==' compares values and types",
+"There is no difference",
+"Both '==' and '===' only compare types"
+],
+correctAnswerIndex: 0
+},
+{
+question: "What is the difference between 'let' and 'var'?",
+choices: [
+"'let' is block scoped, while 'var' is function scoped",
+"'var' is block scoped, while 'let' is function scoped",
+"There is no difference",
+"'let' can only be used for strings, while 'var' can be used for any data type"
+],
+correctAnswerIndex: 0
+}
 ];
-
-
-// Define global variables
-let score = 0;
-let timeLeft = 60;
-let timerInterval;
-let currentQuestionIndex = 0;
 
 // Get elements from the page
 const startButton = document.getElementById("start");
-const timeDisplay = document.getElementById("time");
+const timeIndicator = document.getElementById("time");
 const questionContainer = document.getElementById("question-container");
+const startScreen = document.getElementById('start-screen');
+const questions = document.getElementById('questions');
+const endScreen = document.getElementById('end-screen');
+const submitBtn = document.getElementById('submit');
+const warning = document.getElementByIdr('.timer');
+const questionTitle = document.getElementById('question');
+const choices = document.getElementById('choices');
+const incorrectAns = document.getElementById('incorrect');
+const correctAns = document.getElementById('correct');
+const startGame = document.getElementById('startGame');
+const warningMusic = document.getElementById('warningMusic');
+const gameComplete = document.getElementById('gameComplete');
+const initials = document.getElementById('initials');
+const finalScore = document.getElementById('final-score');
+const feedBack = document.getElementById('feedback');
 
+// Define global variables
+let intervalID = null;
+let timeOutID = null;
+let timeRemaining = 0;
+let questionIndex = 0;
+//object format for saving player score
+let scoreSave = {
+inital: '',
+score: 0
+}
 
+//function to initialize the app
+function init() {
+  // Shuffle questions
+  for (let i = quizQuestions.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [questionArr[i], quizQuestions[j]] = [quizQuestions[j], quizQuestions[i]];
+  }
 
-//code for timer linked to start button
-var timer = document.querySelector("#time");
-var startBtn = document.querySelector("#start");
-let count = 30;
+  // Calculate total time
+  const totalTime = quizQuestions.length * 10;
 
+  // Display total time
+  timeIndicator.textContent = totalTime;
 
+  // Hide start screen and show questions
+  startScreen.style.display = "none";
+  questions.style.display = "block";
 
+  // Reset audio
+  [startGame, correctAns, incorrectAns, warningMusic, gameComplete].forEach(audio => {
+    audio.currentTime = 0;
+  });
+}
 
-//timer button counts down
-startButton.addEventListener('click', () => {
-  // start the timer
-  const timer = setInterval(function() {
-    timeLeft--;
-    // update the time left on the page
-    const timerDisplay = document.getElementById('time');
-    timerDisplay.textContent = `Time left: ${timeLeft} seconds`;
-
-    if (timeLeft === 0) {
-      clearInterval(timer);
-      endQuiz(); // call function to end the quiz when time is up
+//function to start the timer
+function timer() {
+  if (timeRemaining > 0) {
+    timeRemaining--;
+    timeIndicator.textContent = timeRemaining;
+    
+    if (timeRemaining > 8) {
+      startGame.play();
+    } else if (timeRemaining <= 8 && intervalID !== null) {
+      startGame.pause();
+      warningMusic.play();
+      warning.classList.add('warning');
     }
-  }, 1000); // update time every 1 second
-
-  // present the first question
-  const questionContainer = document.getElementById('question-container');
-  showQuestion(questionContainer, questions[currentQuestionIndex]);
-});
-
-
-function showQuestion(container, question) {
-  // display the question on the page
-  const questionText = container.querySelector('.question');
-  questionText.textContent = question.questionText;
-
-  // display the choices on the page
-  const choiceList = container.querySelector('.choices');
-  choiceList.innerHTML = '';
-  question.choices.forEach(function(choice, index) {
-    const li = document.createElement('li');
-    li.classList.add('choice');
-    li.textContent = choice;
-    li.setAttribute('data-index', index);
-    choiceList.appendChild(li);
-  });
-
-  // add event listener to check the answer when user clicks on a choice
-  const choices = container.querySelectorAll('.choice');
-  choices.forEach(function(choice) {
-    choice.addEventListener('click', function() {
-      checkAnswer(choice, question);
-    });
-  });
-}
-
-
-function checkAnswer(choice, question) {
-  // check if the choice is correct
-  if (choice.dataset.correct === "true") {
-    // if correct, update score
-    score++;
+    
+    setTimeout(timer, 1000);
   } else {
-    // if wrong, deduct time
-    timeLeft -= 10;
-  }
-
-
-  function updateScore() {
-  const scoreElement = document.getElementById('score');
-  scoreElement.textContent = `Score: ${score}`;
-}
-
-function updateTimeLeft() {
-  const timerDisplay = document.getElementById('time');
-  timerDisplay.textContent = `Time left: ${timeLeft} seconds`;
-}
-
-  // update score and time left on the page
-  updateScore();
-  updateTimeLeft();
-
-  // move on to the next question or end the quiz if it's the last question
-  currentQuestionIndex++;
-  if (currentQuestionIndex < questions.length) {
-    showQuestion(questionContainer, questions[currentQuestionIndex]);
-  } else {
-    endQuiz();
+    // if not end the game
+    clearInterval(intervalID);
+    intervalID = null;
+    endGame();
   }
 }
 
-
-function endQuiz() {
-  // stop the timer
-  clearInterval(timer);
-
-  // hide the question container
-  const questionContainer = document.getElementById('question-container');
-  questionContainer.style.display = 'none';
-
-  // show the end screen
-  const endScreen = document.getElementById('end-screen');
-  endScreen.style.display = 'block';
-
-  // display the final score
-  const finalScore = document.getElementById('final-score');
-  finalScore.textContent = `Your final score is: ${score}`;
-
-  // create a form for user to enter their initials and score
-  const form = document.createElement('form');
-  form.innerHTML = `
-    <div class="form-group">
-      <label for="initials">Enter Initials:</label>
-      <input type="text" class="form-control" id="initials" required>
-    </div>
-    <button type="submit" class="btn btn-primary" id="submit">Submit</button>
-  `;
-
-  // add event listener to form submit button
-  form.addEventListener('submit', function(event) {
-    event.preventDefault();
-    const initials = document.getElementById('initials').value;
-    storeHighscore(initials, score);
-    window.location.href = 'highscores.html'; // redirect to high scores page
-  });
-
-  endScreen.appendChild(form);
+function checkAns(test) {
+    let check = questionShuff[questionIndex].correct;
+    const isCorrect = test == check.toString() ? true : false;
+    if (isCorrect) {
+        correctAns.play();
+    } else {
+        incorrectAns.play();
+    }
+    return isCorrect;
 }
