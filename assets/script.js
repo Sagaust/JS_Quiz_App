@@ -177,6 +177,30 @@ function showQuestion(container, question) {
 }
 
 
+function checkAnswer(choice, question) {
+  // check if the choice is correct
+  if (choice.dataset.correct === "true") {
+    // if correct, update score
+    score++;
+  } else {
+    // if wrong, deduct time
+    timeLeft -= 10;
+  }
+
+  // update score and time left on the page
+  updateScore();
+  updateTimeLeft();
+
+  // move on to the next question or end the quiz if it's the last question
+  currentQuestionIndex++;
+  if (currentQuestionIndex < questions.length) {
+    showQuestion(questionContainer, questions[currentQuestionIndex]);
+  } else {
+    endQuiz();
+  }
+}
+
+
 startBtn.addEventListener("click", startQuiz) {
     count--;
     time.textContent = count;
