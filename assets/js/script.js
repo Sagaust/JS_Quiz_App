@@ -106,6 +106,13 @@ var questions = [
 let score = 0;
 let timeLeft = 60;
 let timerInterval;
+let currentQuestionIndex = 0;
+
+// Get elements from the page
+const startButton = document.getElementById("start");
+const timeDisplay = document.getElementById("time");
+const questionContainer = document.getElementById("question-container");
+
 
 
 //code for timer linked to start button
@@ -114,29 +121,15 @@ var startBtn = document.querySelector("#start");
 let count = 30;
 
 
+
+
 //timer button counts down
-function startQuiz() {
-  // Start the timer
-  let timeLeft = 60; // Set the time limit for the quiz
-  let countdownTimer = setInterval(() => {
-    if (timeLeft <= 0) {
-      clearInterval(countdownTimer);
-      // Add code here to handle time up
-      console.log('Time up!');
-    } else {
-      // Display the time left
-      console.log(`Time left: ${timeLeft}`);
-      timeLeft--;
-    }
-  }, 1000);
-
-
-  function startQuiz() {
+startButton.addEventListener('click', () => {
   // start the timer
   const timer = setInterval(function() {
     timeLeft--;
     // update the time left on the page
-    const timerDisplay = document.getElementById('timer');
+    const timerDisplay = document.getElementById('time');
     timerDisplay.textContent = `Time left: ${timeLeft} seconds`;
 
     if (timeLeft === 0) {
@@ -148,7 +141,7 @@ function startQuiz() {
   // present the first question
   const questionContainer = document.getElementById('question-container');
   showQuestion(questionContainer, questions[currentQuestionIndex]);
-}
+});
 
 
 function showQuestion(container, question) {
@@ -187,6 +180,17 @@ function checkAnswer(choice, question) {
     timeLeft -= 10;
   }
 
+
+  function updateScore() {
+  const scoreElement = document.getElementById('score');
+  scoreElement.textContent = `Score: ${score}`;
+}
+
+function updateTimeLeft() {
+  const timerDisplay = document.getElementById('time');
+  timerDisplay.textContent = `Time left: ${timeLeft} seconds`;
+}
+
   // update score and time left on the page
   updateScore();
   updateTimeLeft();
@@ -201,31 +205,39 @@ function checkAnswer(choice, question) {
 }
 
 
-startBtn.addEventListener("click", startQuiz) {
-    count--;
-    time.textContent = count;
-    if (count === 0) {
-        clearInterval(interval);
-    }
+function endQuiz() {
+  // stop the timer
+  clearInterval(timer);
 
-}
+  // hide the question container
+  const questionContainer = document.getElementById('question-container');
+  questionContainer.style.display = 'none';
 
+  // show the end screen
+  const endScreen = document.getElementById('end-screen');
+  endScreen.style.display = 'block';
 
-// Function to store high scores
+  // display the final score
+  const finalScore = document.getElementById('final-score');
+  finalScore.textContent = `Your final score is: ${score}`;
 
-function storeHighScores(score) {
-  // Get existing high scores from local storage, or initialize empty array
-  let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+  // create a form for user to enter their initials and score
+  const form = document.createElement('form');
+  form.innerHTML = `
+    <div class="form-group">
+      <label for="initials">Enter Initials:</label>
+      <input type="text" class="form-control" id="initials" required>
+    </div>
+    <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+  `;
 
-  // Add new score to high scores array
-  highScores.push(score);
+  // add event listener to form submit button
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    const initials = document.getElementById('initials').value;
+    storeHighscore(initials, score);
+    window.location.href = 'highscores.html'; // redirect to high scores page
+  });
 
-  // Sort high scores in descending order
-  highScores.sort((a, b) => b - a);
-
-  // Truncate high scores to top 10 scores
-  highScores = highScores.slice(0, 10);
-
-  // Store updated high scores in local storage
-  localStorage.setItem("highScores", JSON.stringify(highScores));
+  endScreen.appendChild(form);
 }
