@@ -1,53 +1,106 @@
 var questions = [
-    {
-        question:"1. What is JavaScript?",
-        answers: ["a)JavaScript is a scripting language used to make the website interactive", 
-        "b) JavaScript is an assembly language used to make the website interactive", 
-        "c) JavaScript is a compiled language used to make the website interactive", "d) None of the mentioned"],
-
+  {
+    question: "What is the correct syntax for creating a new JavaScript variable?",
+    choices: {
+      a: "var = exampleVariable;",
+      b: "variable exampleVariable = new var;",
+      c: "var exampleVariable = '';",
+      d: "variable.exampleVariable = '';"
     },
-
-    {
-        question:"1. What is JavaScript?",
-        answers: ["a)JavaScript is a scripting language used to make the website interactive", 
-        "b) JavaScript is an assembly language used to make the website interactive", 
-        "c) JavaScript is a compiled language used to make the website interactive", "d) None of the mentioned"],
-
+    correctAnswer: "c"
+  },
+  {
+    question: "Which of the following is NOT a JavaScript data type?",
+    choices: {
+      a: "string",
+      b: "boolean",
+      c: "integer",
+      d: "object"
     },
-    {
-        question:"1. What is JavaScript?",
-        answers: ["a)JavaScript is a scripting language used to make the website interactive", 
-        "b) JavaScript is an assembly language used to make the website interactive", 
-        "c) JavaScript is a compiled language used to make the website interactive", "d) None of the mentioned"],
-
+    correctAnswer: "c"
+  },
+  {
+    question: "What is the output of the following code?\n\nconsole.log('5' + 5);",
+    choices: {
+      a: "55",
+      b: "10",
+      c: "undefined",
+      d: "NaN"
     },
-        {
-        question:"1. What is JavaScript?",
-        answers: ["a)JavaScript is a scripting language used to make the website interactive", 
-        "b) JavaScript is an assembly language used to make the website interactive", 
-        "c) JavaScript is a compiled language used to make the website interactive", "d) None of the mentioned"],
-
+    correctAnswer: "a"
+  },
+  {
+    question: "What is the output of the following code?\n\nvar x = 10;\nconsole.log(x == '10');",
+    choices: {
+      a: "true",
+      b: "false",
+      c: "undefined",
+      d: "NaN"
     },
-    {
-        question:"1. What is JavaScript?",
-        answers: ["a)JavaScript is a scripting language used to make the website interactive", 
-        "b) JavaScript is an assembly language used to make the website interactive", 
-        "c) JavaScript is a compiled language used to make the website interactive", "d) None of the mentioned"],
-
+    correctAnswer: "a"
+  },
+  {
+    question: "What is the correct way to create a function in JavaScript?",
+    choices: {
+      a: "function = exampleFunction() {}",
+      b: "var exampleFunction = function() {}",
+      c: "function exampleFunction() {}",
+      d: "var exampleFunction = () => {}"
     },
-    {
-        question:"1. What is JavaScript?",
-        answers: ["a)JavaScript is a scripting language used to make the website interactive", 
-        "b) JavaScript is an assembly language used to make the website interactive", 
-        "c) JavaScript is a compiled language used to make the website interactive", "d) None of the mentioned"],
-
+    correctAnswer: "c"
+  },
+  {
+    question: "What is the output of the following code?\n\nconsole.log(typeof null);",
+    choices: {
+      a: "null",
+      b: "undefined",
+      c: "object",
+      d: "string"
     },
-
-
-
-
-
+    correctAnswer: "c"
+  },
+  {
+    question: "Which of the following is NOT a comparison operator in JavaScript?",
+    choices: {
+      a: "==",
+      b: "===",
+      c: "!=",
+      d: "!=="
+    },
+    correctAnswer: "d"
+  },
+  {
+    question: "What is the output of the following code?\n\nvar exampleArray = [1, 2, 3];\nconsole.log(exampleArray[2]);",
+    choices: {
+      a: "1",
+      b: "2",
+      c: "3",
+      d: "undefined"
+    },
+    correctAnswer: "c"
+  },
+  {
+    question: "What is the correct way to write an 'if' statement in JavaScript?",
+    choices: {
+      a: "if exampleVariable == true then {}",
+      b: "if (exampleVariable == true) {}",
+      c: "if exampleVariable equals true {}",
+      d: "if exampleVariable is true then {}"
+    },
+    correctAnswer: "b"
+  },
+  {
+    question: "What is the output of the following code?\n\nconsole.log(5 > 3 && 2 < 4);",
+    choices: {
+      a: "true",
+      b: "false",
+      c: "undefined",
+      d: "NaN"
+    },
+    correctAnswer: "a"
+  }
 ];
+
 
 // Define global variables
 let score = 0;
